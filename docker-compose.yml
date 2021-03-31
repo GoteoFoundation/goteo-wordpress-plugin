@@ -1,0 +1,34 @@
+version: '3.1'
+
+services:
+
+  wordpress:
+    # image: wordpress
+    container_name: wordpress-cli
+    build: docker
+    restart: always
+    ports:
+      - 3000:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: lazonauser
+      WORDPRESS_DB_PASSWORD: lazonapass
+      WORDPRESS_DB_NAME: lazonadb
+    volumes:
+      - wordpress:/var/www/html
+    
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: lazonadb
+      MYSQL_USER: lazonauser
+      MYSQL_PASSWORD: lazonapass
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  db:
+  wordpress:
