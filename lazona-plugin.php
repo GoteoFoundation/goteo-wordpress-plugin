@@ -43,16 +43,16 @@
 
     add_filter( 'plugin_action_links_' . $this->plugin, array( $this, 'settings_link'));
 
-    add_action( 'admin_init', array($this, 'my_settings_init'));
+    add_action( 'admin_init', array($this, 'goteo_settings_init'));
 
     add_action( 'admin_init', array($this, 'goteo_api_init'));
   }
 
-  public function my_settings_init() {
+  public function goteo_settings_init() {
     add_settings_section(
-      'sample_page_setting_section',
+      'goteo-main-settings',
       __( 'Goteo Plugin Settings', 'goteo-admin-setting' ),
-      array($this, 'comission_callback_function'),
+      array($this, 'goteo_settings_callback_function'),
       'goteo-settings'
     );
 
@@ -61,7 +61,7 @@
       __( 'Comisión', 'goteo-comission' ),
       array($this, 'my_setting_markup'),
       'goteo-settings',
-      'sample_page_setting_section'
+      'goteo-main-settings'
     );
 
     add_settings_field(
@@ -69,20 +69,18 @@
       __( 'Fecha', 'goteo-date-definition'),
       array($this, 'date_definition_markup'),
       'goteo-settings',
-      'sample_page_setting_section'
+      'goteo-main-settings'
     );
 
     register_setting( 'goteo-settings', 'goteo_comission' );
     register_setting( 'goteo-settings', 'goteo_date');
-
-
   }
 
   function goteo_api_init() {
     add_settings_section(
-      'goteo_page_api_section',
+      'goteo-apikey-settings',
       __( 'Goteo API KEY Settings', 'goteo-admin-setting' ),
-      array($this, 'apikey_callback_function'),
+      array($this, 'goteo_apikey_callback_function'),
       'goteo-apikey'
     );
 
@@ -91,7 +89,7 @@
       __( 'User', 'goteo-user' ),
       array($this, 'goteo_user_markup'),
       'goteo-apikey',
-      'goteo_page_api_section'
+      'goteo-apikey-settings'
     );
 
     add_settings_field(
@@ -99,7 +97,7 @@
       __( 'Key', 'goteo-key'),
       array($this, 'goteo_apikey_markup'),
       'goteo-apikey',
-      'goteo_page_api_section'
+      'goteo-apikey-settings'
     );
 
     register_setting( 'goteo-apikey', 'goteo_user' );
@@ -108,14 +106,12 @@
 
   function date_definition_markup() {
     ?>
-    <!-- <label for="goteo_comission"><?php _e( 'Comisión', 'goteo-admin-setting-comission' ); ?></label> -->
     <input type="date" id="goteo_date" name="goteo_date" value="<?php echo get_option( 'goteo_date' ); ?>" required>
     <?php
   }
 
   function my_setting_markup() {
     ?>
-    <!-- <label for="goteo_comission"><?php _e( 'Comisión', 'goteo-admin-setting-comission' ); ?></label> -->
     <input type="number" id="goteo_comission" name="goteo_comission" step="0.1" value="<?php echo get_option( 'goteo_comission' ); ?>" required>
     <?php
   }
@@ -134,10 +130,13 @@
   }
 
 
-  function comission_callback_function( $args ) {
+  function goteo_settings_callback_function( $args ) {
     echo '<p>El % de comisión que escojas se utilizará para calcular la cantidad de dinero que puedes donar a través de <a href="https://goteo.org">Goteo.org</a></p>';
   }
-  
+
+  function goteo_apikey_callback_function( $args ) {
+    echo '<p>Las credenciales introducidas se usarán para conectarse a la plataforma <a href="https://goteo.org">Goteo.org</a></p>';
+  }
 
   public function settings_link($links) {
     $settings_link = '<a href="admin.php?page=goteo_lazona_plugin">Settings</a>';
@@ -161,7 +160,6 @@
   }
 
 }
-
 
 if ( class_exists('GoteoLaZona')) {
   $goteoLaZona = new GoteoLaZona();
