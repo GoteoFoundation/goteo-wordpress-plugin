@@ -1,0 +1,8 @@
+.goteo-project-mosaic {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.goteo-project-mosaic > iframe {
+  padding-bottom: 1em;
+}
