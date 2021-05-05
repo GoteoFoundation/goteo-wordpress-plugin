@@ -6,3 +6,28 @@
 .goteo-project-mosaic > iframe {
   padding-bottom: 1em;
 }
+
+.goteo-settings {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.goteo-settings > div.wrap > form > p.submit {
+  display: inline;
+  padding: 1em;
+}
+
+.goteo-matcher-data {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.goteo-matcher-data > div.wrap {
+  text-align:center;
+  height: 10em;
+}
+
+.goteo-matcher-data > div.wrap > h1 {
+  text-align:center
+}
+

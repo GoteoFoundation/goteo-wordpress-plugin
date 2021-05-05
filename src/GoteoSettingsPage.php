@@ -1,64 +1,53 @@
 <?php
-/*
- Plugin Name: Goteo LaZona plugin
- Plugin URI: https://git.goteo.org/dev/la-zona
- Description: This Wordpress - Woocommerce plugin connects a marketplace to the crowdfunding platform Goteo.org
- Version: 0.0.1
- Author: Platoniq Foundation, Goteo
- Author URI: https://goteo.org
- License: GNU Public License v3
- Domain: /languages
- */
 
- if ( ! defined( 'ABSPATH' ) ) {
-   die;
- }
+class GoteoSettingsPage {
 
- class GoteoLaZona
-{
+  private $page = 'goteo-settings';
 
-  public $plugin;
-
-  function __construct() {
-    $this->plugin = plugin_basename(__FILE__);
-  }
-
-  public function activate() {
-    flush_rewrite_rules();
-  }
-
-  public function deactivate() {
-    flush_rewrite_rules();
-  }
-
-  public function uninstall() {
-
-  }
-
-  public function register() {
+  public function __construct() {
     add_action('admin_enqueue_scripts', array($this, 'enqueue'));
     // add_action('wq_enqueue_scripts', array($this, 'enqueue'));
 
-    add_action( 'admin_menu' , array($this, 'add_admin_pages'));
+    add_action( 'admin_menu' , array($this, 'add_option_page'));
 
     add_filter( 'plugin_action_links_' . $this->plugin, array( $this, 'settings_link'));
 
     add_action( 'admin_init', array($this, 'goteo_settings_init'));
 
     add_action( 'admin_init', array($this, 'goteo_api_init'));
+ }
+
+ public function add_option_page() {
+  add_options_page(
+    'Goteo Crowdfunding',
+    'Goteo Crowdfunding', 
+    'manage_options', 
+    'goteo-settings', 
+    array($this, 'options_page')
+  );
+ }
+
+  public function options_page() {
+    require_once plugin_dir_path(__DIR__) . 'templates/admin/options.php';
+  }
+
+  public function add_action_link() {
+    $settings_link = "<a href='admin.php?page=$this->page'>Settings</a>";
+    array_push($links, $settings_link);
+    return $links;
   }
 
   public function goteo_settings_init() {
     add_settings_section(
       'goteo-main-settings',
-      __( 'Goteo Plugin Settings', 'goteo-admin-setting' ),
+      __( 'Goteo Plugin Settings', 'goteo' ),
       array($this, 'goteo_settings_callback_function'),
       'goteo-settings'
     );
 
     add_settings_field(
       'goteo_comission',
-      __( 'Comisión', 'goteo-comission' ),
+      __( 'Comisión', 'goteo' ),
       array($this, 'my_setting_markup'),
       'goteo-settings',
       'goteo-main-settings'
@@ -66,7 +55,7 @@
 
     add_settings_field(
       'goteo_date',
-      __( 'Fecha', 'goteo-date-definition'),
+      __( 'Fecha', 'goteo'),
       array($this, 'date_definition_markup'),
       'goteo-settings',
       'goteo-main-settings'
@@ -79,14 +68,22 @@
   function goteo_api_init() {
     add_settings_section(
       'goteo-apikey-settings',
-      __( 'Goteo API KEY Settings', 'goteo-admin-setting' ),
+      __( 'Goteo API KEY Settings', 'goteo' ),
       array($this, 'goteo_apikey_callback_function'),
       'goteo-apikey'
     );
 
     add_settings_field(
+      'goteo_base_url',
+      __( 'Base Url', 'goteo' ),
+      array($this, 'goteo_base_url_markup'),
+      'goteo-apikey',
+      'goteo-apikey-settings'
+    );
+
+    add_settings_field(
       'goteo_user',
-      __( 'User', 'goteo-user' ),
+      __( 'User', 'goteo' ),
       array($this, 'goteo_user_markup'),
       'goteo-apikey',
       'goteo-apikey-settings'
@@ -94,12 +91,13 @@
 
     add_settings_field(
       'goteo_key',
-      __( 'Key', 'goteo-key'),
+      __( 'Key', 'goteo'),
       array($this, 'goteo_apikey_markup'),
       'goteo-apikey',
       'goteo-apikey-settings'
     );
 
+    register_setting( 'goteo-apikey', 'goteo_base_url' );
     register_setting( 'goteo-apikey', 'goteo_user' );
     register_setting( 'goteo-apikey', 'goteo_key');
   }
@@ -116,6 +114,13 @@
     <?php
   }
 
+  function goteo_base_url_markup() {
+    ?>
+    <input type="url" id="goteo_base_url" name="goteo_base_url" value="<?php echo get_option( 'goteo_base_url' ); ?>" required>
+    <?php
+
+  }
+
   function goteo_apikey_markup() {
     ?>
     <input type="text" id="goteo_key" name="goteo_key" value="<?php echo get_option( 'goteo_key' ); ?>" required>
@@ -129,7 +134,6 @@
     <?php
   }
 
-
   function goteo_settings_callback_function( $args ) {
     echo '<p>El % de comisión que escojas se utilizará para calcular la cantidad de dinero que puedes donar a través de <a href="https://goteo.org">Goteo.org</a></p>';
   }
@@ -138,36 +142,11 @@
     echo '<p>Las credenciales introducidas se usarán para conectarse a la plataforma <a href="https://goteo.org">Goteo.org</a></p>';
   }
 
-  public function settings_link($links) {
-    $settings_link = '<a href="admin.php?page=goteo_lazona_plugin">Settings</a>';
-    array_push($links, $settings_link);
-    return $links;
-  }
-
-  // deals with the routing of the admin menu to the admin_index
-  public function add_admin_pages() {
-    add_menu_page('Crowdfunding Plugin', 'Crowdfunding', 'manage_options', 'goteo_lazona_plugin', array($this, 'admin_index'), plugins_url('/assets/icon/goteo.svg', __FILE__), 110);
-  }
-
-  public function admin_index() {
-    require_once plugin_dir_path( __FILE__ ) . 'templates/admin/admin.php';
-  }
 
   public function enqueue() {
-    wp_enqueue_style('goteo_styles', plugins_url('/assets/goteo_styles.css', __FILE__));
-    wp_enqueue_script('gotoe_javascript', plugins_url('/assets/goteo_javascript.js', __FILE__));
-    wp_enqueue_script('goteo_api', plugins_url('/assets/goteo_api.js', __FILE__));
+    wp_enqueue_style('goteo_styles', plugins_url('/assets/goteo_styles.css', __DIR__));
+    wp_enqueue_script('gotoe_javascript', plugins_url('/assets/goteo_javascript.js', __DIR__));
+    wp_enqueue_script('goteo_api', plugins_url('/assets/goteo_api.js', __DIR__));
   }
 
 }
-
-if ( class_exists('GoteoLaZona')) {
-  $goteoLaZona = new GoteoLaZona();
-  $goteoLaZona->register();
-}
-
-register_activation_hook( __FILE__, [$goteoLaZona, 'activate']);
-
-register_deactivation_hook( __FILE__, [$goteoLaZona, 'deactivate']);
-
-// register_uninstall_hook(__FILE__, [$goteoLaZona, 'uninstall']);
