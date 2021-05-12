@@ -27,6 +27,8 @@ services:
       MYSQL_USER: lazonauser
       MYSQL_PASSWORD: lazonapass
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    ports: 
+      - 33060:3306
     volumes:
       - db:/var/lib/mysql
 
