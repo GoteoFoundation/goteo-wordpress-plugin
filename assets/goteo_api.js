@@ -1,5 +1,9 @@
 class GoteoAPI {
   
+  constructor(url) {
+    this.api_base_url = url;
+  }
+
   setToken(token) {
     this.token = token;
   }
@@ -9,7 +13,7 @@ class GoteoAPI {
   }
   
   async login(username, apikey) {
-    let response = await fetch( 'https://api.goteo.org/v1/login', {
+    let response = await fetch( this.api_base_url + '/login', {
       headers: {
         'Authorization': 'Basic ' + btoa(username + ":" + apikey)
       }

@@ -5,10 +5,7 @@ class GoteoSettingsPage {
   private $page = 'goteo-settings';
 
   public function __construct() {
-    add_action('admin_enqueue_scripts', array($this, 'enqueue'));
-    // add_action('wq_enqueue_scripts', array($this, 'enqueue'));
-
-    add_action( 'admin_menu' , array($this, 'add_option_page'));
+    add_action( 'admin_menu' , array($this, 'add_submenu_settings_page'));
 
     add_filter( 'plugin_action_links_' . $this->plugin, array( $this, 'settings_link'));
 
@@ -17,17 +14,22 @@ class GoteoSettingsPage {
     add_action( 'admin_init', array($this, 'goteo_api_init'));
  }
 
- public function add_option_page() {
-  add_options_page(
-    'Goteo Crowdfunding',
-    'Goteo Crowdfunding', 
+ public function add_submenu_settings_page() {
+  add_submenu_page(
+    'goteo_plugin',
+    __('Settings', 'goteo'),
+    __('Settings', 'goteo'),
     'manage_options', 
-    'goteo-settings', 
-    array($this, 'options_page')
+    'goteo_plugin_settings', 
+    array($this, 'submenu_page')
   );
  }
 
-  public function options_page() {
+  public function submenu_page() {
+    if ( !current_user_can( 'manage_options' ) )  {
+      wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+    }
+    
     require_once plugin_dir_path(__DIR__) . 'templates/admin/options.php';
   }
 
@@ -75,8 +77,16 @@ class GoteoSettingsPage {
 
     add_settings_field(
       'goteo_base_url',
-      __( 'Base Url', 'goteo' ),
+      __( 'Base Url ', 'goteo' ),
       array($this, 'goteo_base_url_markup'),
+      'goteo-apikey',
+      'goteo-apikey-settings'
+    );
+
+    add_settings_field(
+      'goteo_base_api_url',
+      __( 'API Base Url', 'goteo' ),
+      array($this, 'goteo_base_api_url_markup'),
       'goteo-apikey',
       'goteo-apikey-settings'
     );
@@ -98,6 +108,7 @@ class GoteoSettingsPage {
     );
 
     register_setting( 'goteo-apikey', 'goteo_base_url' );
+    register_setting( 'goteo-apikey', 'goteo_base_api_url' );
     register_setting( 'goteo-apikey', 'goteo_user' );
     register_setting( 'goteo-apikey', 'goteo_key');
   }
@@ -121,6 +132,13 @@ class GoteoSettingsPage {
 
   }
 
+  function goteo_base_api_url_markup() {
+    ?>
+    <input type="url" id="goteo_base_api_url" name="goteo_base_api_url" value="<?php echo get_option( 'goteo_base_api_url' ); ?>" required>
+    <?php
+
+  }
+
   function goteo_apikey_markup() {
     ?>
     <input type="text" id="goteo_key" name="goteo_key" value="<?php echo get_option( 'goteo_key' ); ?>" required>
@@ -135,18 +153,11 @@ class GoteoSettingsPage {
   }
 
   function goteo_settings_callback_function( $args ) {
-    echo '<p>El % de comisión que escojas se utilizará para calcular la cantidad de dinero que puedes donar a través de <a href="https://goteo.org">Goteo.org</a></p>';
+    echo __('<p>El % de comisión que escojas se utilizará para calcular la cantidad de dinero que puedes donar a través de <a href="https://goteo.org">Goteo.org</a></p>', 'goteo');
   }
 
   function goteo_apikey_callback_function( $args ) {
-    echo '<p>Las credenciales introducidas se usarán para conectarse a la plataforma <a href="https://goteo.org">Goteo.org</a></p>';
-  }
-
-
-  public function enqueue() {
-    wp_enqueue_style('goteo_styles', plugins_url('/assets/goteo_styles.css', __DIR__));
-    wp_enqueue_script('gotoe_javascript', plugins_url('/assets/goteo_javascript.js', __DIR__));
-    wp_enqueue_script('goteo_api', plugins_url('/assets/goteo_api.js', __DIR__));
+    echo __('<p>Las credenciales introducidas se usarán para conectarse a la plataforma <a href="https://goteo.org">Goteo.org</a></p>', 'goteo');
   }
 
 }

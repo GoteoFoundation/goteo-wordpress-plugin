@@ -11,8 +11,15 @@
  */
 
  if ( ! defined( 'ABSPATH' ) ) {
-   die;
+  die;
  }
+
+ if ( ! in_array( 
+    'woocommerce/woocommerce.php',
+    apply_filters( 'active_plugins', get_option( 'active_plugins' ) )
+  ) ) {
+    die;
+  }
 
  require_once __DIR__ . '/src/Goteo.php';
  require_once __DIR__ . '/src/Goteo_HttpClient.php';
@@ -21,18 +28,16 @@
  require_once __DIR__ . '/src/Repositories/MatcherRepository.php';
  require_once __DIR__ . '/src/Repositories/MatcherProjectsRepository.php';
 
- if (is_admin()) {
-   require_once __DIR__ . '/src/GoteoSettingsPage.php';
-   $settings_page = new GoteoSettingsPage();
-   add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $settings_page, 'add_action_link'));
-  }
-
-
 if ( class_exists('Goteo')) {
   $goteo = new Goteo();
   $goteo->register();
 }
 
+if (is_admin()) {
+  require_once __DIR__ . '/src/GoteoSettingsPage.php';
+  $settings_page = new GoteoSettingsPage();
+  add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $settings_page, 'add_action_link'));
+ }
 
 function activate() {
   flush_rewrite_rules();
