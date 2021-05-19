@@ -1,5 +1,11 @@
 # README
 
+The Goteo plugin for Wordpress is a plugin that lets you connect your woocommerce instance to a crowdfunding platform using [Goteo.org](https://goteo.org)
+
+This plugin is meant to be used alongside a woocommerce installation. It allows you to login to a Goteo platform throught the API and be able to donate a % of your orders.
+
+This plugin is still under development.
+
 Docker
 ------
 
@@ -18,12 +24,15 @@ To build a new image we use the `Dockerfile` file. First be sure to be on the ro
 
 Build docker:
 
+```
 sudo docker build . -t goteo/wordpress-lazona:VERSION -f Dockerfile
+```
 
 To upload it to the Docker hub (permissions needed):
 
+```
 sudo docker login
-sudo docker push goteo/wordpress-lazona:VERSION
-sudo docker tag goteo/wordpress-lazona:VERSION goteo/wordpress-lazona:latest
-sudo docker push goteo/wordpress-lazona:latest
-
+sudo docker push goteo/wordpress-plugin:VERSION
+sudo docker tag goteo/wordpress-plugin:VERSION goteo/wordpress-plugin:latest
+sudo docker push goteo/wordpress-plugin:latest
+```

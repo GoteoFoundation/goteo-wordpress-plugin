@@ -57,9 +57,9 @@
     $projects = MatcherProjectRepository::getProjects($matcher->id);
     if ($projects):
   ?>
-    <!-- <?php require_once 'partials/projects_widget.php'; ?>
+    <?php require_once 'partials/projects_widget.php'; ?>
 
-    <?php require_once 'partials/map.php'; ?> -->
+    <?php require_once 'partials/map.php'; ?>
   
   <?php endif; ?>
 

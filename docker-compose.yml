@@ -11,9 +11,9 @@ services:
       - 3000:80
     environment:
       WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: lazonauser
-      WORDPRESS_DB_PASSWORD: lazonapass
-      WORDPRESS_DB_NAME: lazonadb
+      WORDPRESS_DB_USER: wordpressuser
+      WORDPRESS_DB_PASSWORD: wordpresspass
+      WORDPRESS_DB_NAME: wordpressdb
     volumes:
       - wordpress:/var/www/html
       - .:/var/www/html/wp-content/plugins/goteo
@@ -22,9 +22,9 @@ services:
     image: mysql:8.0
     restart: always
     environment:
-      MYSQL_DATABASE: lazonadb
-      MYSQL_USER: lazonauser
-      MYSQL_PASSWORD: lazonapass
+      MYSQL_DATABASE: wordpressdb
+      MYSQL_USER: wordpressuser
+      MYSQL_PASSWORD: wordpresspass
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
     ports: 
       - 33060:3306
