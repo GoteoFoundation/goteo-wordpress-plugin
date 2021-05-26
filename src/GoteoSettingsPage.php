@@ -121,7 +121,7 @@ class GoteoSettingsPage {
 
   function my_setting_markup() {
     ?>
-    <input type="number" id="goteo_comission" name="goteo_comission" step="0.1" value="<?php echo get_option( 'goteo_comission' ); ?>" required>
+    <input type="number" id="goteo_comission" name="goteo_comission" step="0.1" min=0 max=100 value="<?php echo get_option( 'goteo_comission' ); ?>" required>
     <?php
   }
 

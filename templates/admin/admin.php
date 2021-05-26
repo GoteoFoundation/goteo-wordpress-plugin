@@ -13,40 +13,25 @@
       <h2> <?php echo __('Saldo comprometido', 'goteo') ?> </h2>
 
       <div class="">
-        <?php // TODO: Integrate with the WooCommerce API
-            $my_posts = wc_get_orders( 
-                array( 
-                  'status' => 'wc-completed',
-                  'type' => 'shop_order',
-                  'date_created' => '>=' . get_option('goteo_date')
-                )
-              );
-
-            $total = 0;
-            foreach ($my_posts as $order) {
-              $total += $order->calculate_totals();
-            }
-        ?>
-
-        <h2> <?= wc_price(round($total * get_option('goteo_comission')), array('decimals' => 0)); ?> </h2>
+        <h2> <?= wc_price( goteo_calculate_amount() ); ?> </h2>
       </div>
     </div>
 
     <div class="wrap">
       <h2> <?php echo __('Saldo enviado a Goteo', 'goteo') ?> </h2>
 
-      <h2> <?php echo wc_price($matcher->{'amount-available'}, array('decimals' => 0)); ?> </h2>
+      <h2> <?= wc_price($matcher->{'amount-available'}, array('decimals' => 0)); ?> </h2>
     </div>
 
     <div class="wrap">
       <h2> <?php echo __('Saldo pendiente de enviar', 'goteo') ?> </h2>
 
       <div class="">
-        <h2> <?php echo wc_price(round($total * get_option('goteo_comission') - $matcher->{'amount-available'}), array('decimals' => 0)); ?> </h2>
+        <h2> <?= wc_price( goteo_calculate_amount() - $matcher->{'amount-available'}) ?> </h2>
       </div>
 
       <div class="goteo-button">
-            <a href="<?= get_option('goteo_base_url') ?>/pool?amount=<?= round($total * get_option('goteo_comission') - $matcher->{'amount-available'}) ?>">
+            <a href="<?= get_option('goteo_base_url') ?>/pool?amount=<?php echo goteo_calculate_amount() - $matcher->{'amount-available'} ?>">
               <button class="goteo-button btn-lg btn-lilac"><?= __('DONATE', 'goteo') ?></button>
             </a>
       </div>
