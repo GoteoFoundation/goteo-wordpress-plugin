@@ -64,7 +64,7 @@ function goteo_calculate_amount() {
     $total += $order->calculate_totals();
   }
 
-  return round(($total * get_option('goteo_comission') / 100), array('decimals' => 0));
+  return round(($total * get_option('goteo_comission') / 100), 0);
 }
 
 function goteo_pending_amount($matcher) {
@@ -72,6 +72,45 @@ function goteo_pending_amount($matcher) {
 
   return ($calculated_amount - $matcher->{'amount-available'}) > 0?
             $calculated_amount - $matcher->{'amount-available'} : 0;
+}
+
+function goteo_woodonation_active() {
+
+  return  in_array( 
+    'woo-donations/woo-donations.php',
+    apply_filters( 'active_plugins', get_option( 'active_plugins' ) )
+  );
+}
+
+function goteo_calculate_donations() {
+  $orders = wc_get_orders( 
+      array( 
+        'status' => 'wc-completed',
+        'type' => 'shop_order',
+        'date_created' => '>=' . get_option('goteo_date')
+      )
+    );
+
+    $total = 0;
+
+    $product="";
+    $options= wdgk_get_wc_donation_setting();
+    if(isset($options['Product'])){
+      $product = $options['Product'];
+    }
+
+    foreach($orders as $order) {
+      foreach( $order->get_items() as $order_item ) {
+        if($product==$order_item['product_id']) {
+
+          print_r($order_item); die;
+          //$total += $order['amount'];
+        }
+
+      }
+    }
+ 
+    return $total;
 }
 
 register_activation_hook( __FILE__, 'activate');

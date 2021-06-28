@@ -24,18 +24,36 @@
           <p> <?= wc_price($matcher->{'amount-available'}, array('decimals' => 0)); ?> </p>
       </li>
 
-      <li>
-        <p><b> <?php echo __('Saldo pendiente de enviar', 'goteo') ?> </b></p>
+      <?php if (goteo_woodonation_active() and get_option('goteo_woodonation_connection')): ?>
+        <li>
+          <h3> <?php echo __('Donaciones a través de Woo Donations', 'goteo') ?> </h3>
 
-        <p> <?= wc_price( goteo_pending_amount($matcher) ) ?> </p>
+          <p> <?= wc_price( goteo_pending_amount($matcher) ) ?> </p>
 
-        <div class="goteo-button">
-          <a href="<?= get_option('goteo_base_url') ?>/pool?amount=<?php echo goteo_calculate_amount() - $matcher->{'amount-available'} ?>">
-            <button class="goteo-button btn-lg btn-lilac"><?= __('DONATE', 'goteo') ?></button>
-          </a>
+          <div class="goteo-button">
+            <a href="<?= get_option('goteo_base_url') ?>/pool?amount=<?php echo goteo_calculate_amount() - $matcher->{'amount-available'} ?>">
+              <button class="goteo-button btn-lg btn-lilac"><?= __('DONATE', 'goteo') ?></button>
+             </a>
+          </div>
         </li>
+      <?php else: ?>
+        <li>
+          <p><b> <?php echo __('Saldo pendiente de enviar', 'goteo') ?> </b></p>
+
+          <p> <?= wc_price( goteo_pending_amount($matcher) ) ?> </p>
+
+          <div class="goteo-button">
+            <a href="<?= get_option('goteo_base_url') ?>/pool?amount=<?php echo goteo_calculate_amount() - $matcher->{'amount-available'} ?>">
+              <button class="goteo-button btn-lg btn-lilac"><?= __('DONATE', 'goteo') ?></button>
+            </a>
+          </div>
+        </li>
+      <?php endif; ?>
     </ul>
   </div>
+
+    
+
 
   <?php
     $projects = MatcherProjectRepository::getProjects($matcher->id);
