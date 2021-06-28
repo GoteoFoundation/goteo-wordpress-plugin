@@ -27,6 +27,8 @@ class Goteo_HttpClient {
     );
 
     $response_code = wp_remote_retrieve_response_code( $response );
+    if ($response_code == 404)
+      return false;
 
     $body = wp_remote_retrieve_body($response);
 
@@ -51,7 +53,7 @@ class Goteo_HttpClient {
       return false;
     }
 
-    if ($response.ok) {
+    if ($response->ok) {
       $body = json_decode(wp_remote_retrieve_body($response));
       $this->token = $body->access_token;
     }

@@ -3,7 +3,7 @@
 ?>
 
 <div class="wrap">
-    <h2> <?php echo __('Proyectos beneficiarios', 'goteo') ?> </h2>
+    <h3> <?php echo __('Proyectos beneficiarios', 'goteo') ?> </h3>
 
     <div class="">
       <div class="goteo-project-mosaic">

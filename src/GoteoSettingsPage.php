@@ -115,13 +115,13 @@ class GoteoSettingsPage {
 
   function date_definition_markup() {
     ?>
-    <input type="date" id="goteo_date" name="goteo_date" value="<?php echo get_option( 'goteo_date' ); ?>" required>
+    <input type="date" id="goteo_date" name="goteo_date" value="<?php echo get_option( 'goteo_date' ) ? get_option('goteo_date') : date('Y-m-d'); ?>" required>
     <?php
   }
 
   function my_setting_markup() {
     ?>
-    <input type="number" id="goteo_comission" name="goteo_comission" step="0.1" min=0 max=100 value="<?php echo get_option( 'goteo_comission' ); ?>" required>
+    <input type="number" id="goteo_comission" name="goteo_comission" step="0.1" min=0 max=100 value="<?php echo get_option( 'goteo_comission' ); ?>" placeholder="0,5" required>
     <?php
   }
 

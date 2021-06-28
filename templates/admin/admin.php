@@ -8,41 +8,45 @@
    $matcher = MatcherRepository::get(get_option('goteo_user'));
    ?>
 
+  <h3> <?php echo __('Datos', 'goteo') ?> </h3>
+
   <div class="goteo-matcher-data">
-    <div class="wrap">
-      <h2> <?php echo __('Saldo comprometido', 'goteo') ?> </h2>
+    <ul>
+      <li>
+          <p><b> <?php echo __('Saldo comprometido', 'goteo') ?> </b></p>
 
-      <div class="">
-        <h2> <?= wc_price( goteo_calculate_amount() ); ?> </h2>
-      </div>
-    </div>
+          <p> <?= wc_price( goteo_calculate_amount() ); ?> </p>
+      </li>
 
-    <div class="wrap">
-      <h2> <?php echo __('Saldo enviado a Goteo', 'goteo') ?> </h2>
+      <li>
+          <p><b> <?php echo __('Saldo enviado a Goteo', 'goteo') ?> </b></p>
 
-      <h2> <?= wc_price($matcher->{'amount-available'}, array('decimals' => 0)); ?> </h2>
-    </div>
+          <p> <?= wc_price($matcher->{'amount-available'}, array('decimals' => 0)); ?> </p>
+      </li>
 
-    <div class="wrap">
-      <h2> <?php echo __('Saldo pendiente de enviar', 'goteo') ?> </h2>
+      <li>
+        <p><b> <?php echo __('Saldo pendiente de enviar', 'goteo') ?> </b></p>
 
-      <div class="">
-        <h2> <?= wc_price( goteo_calculate_amount() - $matcher->{'amount-available'}) ?> </h2>
-      </div>
+        <p> <?= wc_price( goteo_pending_amount($matcher) ) ?> </p>
 
-      <div class="goteo-button">
-            <a href="<?= get_option('goteo_base_url') ?>/pool?amount=<?php echo goteo_calculate_amount() - $matcher->{'amount-available'} ?>">
-              <button class="goteo-button btn-lg btn-lilac"><?= __('DONATE', 'goteo') ?></button>
-            </a>
-      </div>
-    </div>
+        <div class="goteo-button">
+          <a href="<?= get_option('goteo_base_url') ?>/pool?amount=<?php echo goteo_calculate_amount() - $matcher->{'amount-available'} ?>">
+            <button class="goteo-button btn-lg btn-lilac"><?= __('DONATE', 'goteo') ?></button>
+          </a>
+        </li>
+    </ul>
   </div>
 
   <?php
     $projects = MatcherProjectRepository::getProjects($matcher->id);
     if ($projects):
   ?>
+
+    <hr>
+
     <?php require_once 'partials/projects_widget.php'; ?>
+
+    <hr>
 
     <?php require_once 'partials/map.php'; ?>
   

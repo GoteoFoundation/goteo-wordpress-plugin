@@ -48,6 +48,7 @@
  
    public function enqueue() {
      wp_enqueue_style('goteo_styles', plugins_url('/assets/goteo_styles.css', __DIR__ ));
+     wp_enqueue_style('woocommerce_goteo_styles', 'woocommerce-layout');
      wp_enqueue_script('gotoe_javascript', plugins_url('/assets/goteo_javascript.js', __DIR__));
      wp_enqueue_script('goteo_api', plugins_url('/assets/goteo_api.js', __DIR__));
    }

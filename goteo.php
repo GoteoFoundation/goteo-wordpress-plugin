@@ -67,6 +67,13 @@ function goteo_calculate_amount() {
   return round(($total * get_option('goteo_comission') / 100), array('decimals' => 0));
 }
 
+function goteo_pending_amount($matcher) {
+  $calculated_amount = goteo_calculate_amount();
+
+  return ($calculated_amount - $matcher->{'amount-available'}) > 0?
+            $calculated_amount - $matcher->{'amount-available'} : 0;
+}
+
 register_activation_hook( __FILE__, 'activate');
 
 register_deactivation_hook( __FILE__, 'deactivate');

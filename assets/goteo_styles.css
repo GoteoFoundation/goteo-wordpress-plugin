@@ -1,6 +1,7 @@
 .goteo-project-mosaic {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-gap: 2rem;
 }
 
 .goteo-project-mosaic > iframe {
@@ -17,18 +18,20 @@
   padding: 1em;
 }
 
-.goteo-matcher-data {
+.goteo-matcher-data > ul  {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));;
 }
 
-.goteo-matcher-data > div.wrap {
+.goteo-matcher-data > ul > li {
   text-align:center;
-  height: 10em;
+  height: auto;
+  background-color: white;
+  border: 1px solid #e0e0e0;
 }
 
-.goteo-matcher-data > div.wrap > h1 {
-  text-align:center
+.goteo-matcher-data > ul > li > p > .woocommerce-Price-amount {
+  font-size: 2rem ;
 }
 
 .goteo-button {
