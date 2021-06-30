@@ -49,18 +49,24 @@ class GoteoSettingsPage {
 
     add_settings_field(
       'goteo_comission',
-      __( 'Comisión', 'goteo' ),
+      __( 'Comisión para la plataforma', 'goteo' ),
       array($this, 'my_setting_markup'),
       'goteo-settings',
-      'goteo-main-settings'
+      'goteo-main-settings',
+      [
+        'label_for' => 'goteo_comission'
+      ]
     );
 
     add_settings_field(
       'goteo_date',
-      __( 'Fecha', 'goteo'),
+      __( 'Fecha de inicio de donaciones', 'goteo'),
       array($this, 'date_definition_markup'),
       'goteo-settings',
-      'goteo-main-settings'
+      'goteo-main-settings',
+      [
+        'label_for' => 'goteo_date' 
+      ]
     );
 
     register_setting( 'goteo-settings', 'goteo_comission' );
@@ -77,18 +83,25 @@ class GoteoSettingsPage {
 
     add_settings_field(
       'goteo_base_url',
-      __( 'Base Url ', 'goteo' ),
+      __( 'Url base de la plataforma Goteo ', 'goteo' ),
       array($this, 'goteo_base_url_markup'),
       'goteo-apikey',
-      'goteo-apikey-settings'
+      'goteo-apikey-settings',
+      [
+        'label_for' => 'goteo_base_url' 
+      ]
+
     );
 
     add_settings_field(
-      'goteo_base_api_url',
+      'API URL de la plataforma Goteo',
       __( 'API Base Url', 'goteo' ),
       array($this, 'goteo_base_api_url_markup'),
       'goteo-apikey',
-      'goteo-apikey-settings'
+      'goteo-apikey-settings',
+       [
+        'label_for' => 'goteo_base_api_url' 
+      ]
     );
 
     add_settings_field(
@@ -96,7 +109,10 @@ class GoteoSettingsPage {
       __( 'User', 'goteo' ),
       array($this, 'goteo_user_markup'),
       'goteo-apikey',
-      'goteo-apikey-settings'
+      'goteo-apikey-settings',
+       [
+        'label_for' => 'goteo_user' 
+      ]
     );
 
     add_settings_field(
@@ -104,7 +120,10 @@ class GoteoSettingsPage {
       __( 'Key', 'goteo'),
       array($this, 'goteo_apikey_markup'),
       'goteo-apikey',
-      'goteo-apikey-settings'
+      'goteo-apikey-settings',
+       [
+        'label_for' => 'goteo_key' 
+      ]
     );
 
     register_setting( 'goteo-apikey', 'goteo_base_url' );
@@ -127,14 +146,14 @@ class GoteoSettingsPage {
 
   function goteo_base_url_markup() {
     ?>
-    <input type="url" id="goteo_base_url" name="goteo_base_url" value="<?php echo get_option( 'goteo_base_url' ); ?>" required>
+    <input type="url" id="goteo_base_url" name="goteo_base_url" value="<?php echo get_option( 'goteo_base_url' ); ?>" placeholder="https://goteo.org" required>
     <?php
 
   }
 
   function goteo_base_api_url_markup() {
     ?>
-    <input type="url" id="goteo_base_api_url" name="goteo_base_api_url" value="<?php echo get_option( 'goteo_base_api_url' ); ?>" required>
+    <input type="url" id="goteo_base_api_url" name="goteo_base_api_url" value="<?php echo get_option( 'goteo_base_api_url' ); ?>" placeholder="https://api.goteo.org/v1" required>
     <?php
 
   }

@@ -56,6 +56,13 @@ function uninstall() {
   delete_option( 'goteo_user' );
 }
 
+function goteo_load_plugin_textdomain() {
+    load_plugin_textdomain('goteo', false, basename( dirname( __FILE__ )) . '/languages');
+}
+add_action('plugins_loaded', 'goteo_load_plugin_textdomain');
+
+
+
 function goteo_calculate_amount() {
   $orders = wc_get_orders( 
     array( 
