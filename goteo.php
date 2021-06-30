@@ -48,6 +48,12 @@ function deactivate() {
 }
 
 function uninstall() {
+  delete_option( 'goteo_date' );
+  delete_option( 'goteo_comission' );
+  delete_option( 'goteo_base_url' );
+  delete_option( 'goteo_base_api_url' );
+  delete_option( 'goteo_key' );
+  delete_option( 'goteo_user' );
 }
 
 function goteo_calculate_amount() {
@@ -78,4 +84,4 @@ register_activation_hook( __FILE__, 'activate');
 
 register_deactivation_hook( __FILE__, 'deactivate');
 
-// register_uninstall_hook(__FILE__, 'uninstall');
+register_uninstall_hook(__FILE__, 'uninstall');
