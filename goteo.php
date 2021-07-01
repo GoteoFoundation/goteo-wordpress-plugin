@@ -115,9 +115,7 @@ function goteo_calculate_donations() {
     foreach($orders as $order) {
       foreach( $order->get_items() as $order_item ) {
         if($product==$order_item['product_id']) {
-
-          print_r($order_item); die;
-          //$total += $order['amount'];
+          $total += $order_item['quantity'] * $order_item['subtotal'];
         }
 
       }

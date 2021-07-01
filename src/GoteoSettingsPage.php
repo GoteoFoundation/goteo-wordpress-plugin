@@ -77,11 +77,17 @@ class GoteoSettingsPage {
         'goteo-settings',
         'goteo-main-settings'
       );
-
-      register_setting( 'goteo-settings', 'goteo_woodonation_connection');
+    } else {
+      add_settings_field(
+        'goteo_woodonation_connection',
+        __( 'Connexión con WooDonation', 'goteo'),
+        array($this, 'woodonation_connection_markup_disabled'),
+        'goteo-settings',
+        'goteo-main-settings'
+      );
     }
 
-
+    register_setting( 'goteo-settings', 'goteo_woodonation_connection');
     register_setting( 'goteo-settings', 'goteo_comission' );
     register_setting( 'goteo-settings', 'goteo_date');
   }
@@ -148,6 +154,13 @@ class GoteoSettingsPage {
   function woodonation_connection_markup() {
     ?>
     <input type="checkbox" id="goteo_date" name="goteo_woodonation_connection" <?= get_option( 'goteo_woodonation_connection' ) ?  'checked=true' : '' ?> >
+    <?php
+  }
+
+  function woodonation_connection_markup_disabled() {
+    ?>
+    <p><?= __('Puedes activar esta opción instalando WooDonation', 'Goteo') ?></p>
+    <input type="checkbox" id="goteo_date" name="goteo_woodonation_connection" disabled >
     <?php
   }
 

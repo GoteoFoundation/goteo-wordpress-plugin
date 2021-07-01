@@ -10,11 +10,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2021-06-30T17:32:30+02:00\n"
-"PO-Revision-Date: 2021-06-30 18:02+0200\n"
+"PO-Revision-Date: 2021-07-01 19:47+0200\n"
 "X-Generator: Poedit 3.0\n"
 "X-Domain: goteo\n"
-"Last-Translator: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: \n"
 "Language: en\n"
 
 #. Plugin Name of the plugin
@@ -82,6 +82,10 @@ msgstr "User"
 #: src/GoteoSettingsPage.php:120
 msgid "Key"
 msgstr "Key"
+
+#: src/GoteoSettingsPage.php:162
+msgid "Puedes activar esta opción instalando WooDonation"
+msgstr "You can activate this option by installing WooDonation"
 
 #: src/GoteoSettingsPage.php:175
 msgid ""
