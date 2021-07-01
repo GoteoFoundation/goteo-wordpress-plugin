@@ -64,6 +64,10 @@ msgstr "Usuari"
 msgid "Key"
 msgstr "Clau"
 
+#: src/GoteoSettingsPage.php:162
+msgid "Puedes activar esta opción instalando WooDonation"
+msgstr "Pots activar aquesta opció instal·lant WooDonation"
+
 #: src/GoteoSettingsPage.php:175
 #, php-format
 msgid ""
