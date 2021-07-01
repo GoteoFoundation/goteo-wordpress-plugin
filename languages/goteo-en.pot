@@ -1,0 +1,137 @@
+# Copyright (C) 2021 Platoniq Foundation, Goteo
+# This file is distributed under the GNU Public License v3.
+msgid ""
+msgstr ""
+"Project-Id-Version: Goteo plugin 0.0.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/goteo-wordpress-"
+"plugin\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-06-30T17:32:30+02:00\n"
+"PO-Revision-Date: 2021-06-30 18:02+0200\n"
+"X-Generator: Poedit 3.0\n"
+"X-Domain: goteo\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: en\n"
+
+#. Plugin Name of the plugin
+msgid "Goteo plugin"
+msgstr "Goteo plugin"
+
+#. Plugin URI of the plugin
+msgid "https://git.goteo.org/dev/goteo-wordpress-plugin"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"This Wordpress - Woocommerce plugin connects a marketplace to the "
+"crowdfunding platform Goteo.org"
+msgstr ""
+
+#. Author of the plugin
+msgid "Platoniq Foundation, Goteo"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://goteo.org"
+msgstr ""
+
+#: src/Goteo.php:32
+msgid "Crowdfunding Plugin"
+msgstr "Crowdfunding Plugin"
+
+#: src/Goteo.php:33
+msgid "Crowdfunding"
+msgstr "Crowdfunding"
+
+#: src/GoteoSettingsPage.php:20 src/GoteoSettingsPage.php:21
+msgid "Settings"
+msgstr "Settings"
+
+#: src/GoteoSettingsPage.php:45
+msgid "Goteo Plugin Settings"
+msgstr "Goteo Plugin Settings"
+
+#: src/GoteoSettingsPage.php:52
+msgid "Comisión para la plataforma"
+msgstr "Platform comission"
+
+#: src/GoteoSettingsPage.php:63
+msgid "Fecha de inicio de donaciones"
+msgstr "Donation start date"
+
+#: src/GoteoSettingsPage.php:79
+msgid "Goteo API KEY Settings"
+msgstr "Goteo API KEY Settings"
+
+#: src/GoteoSettingsPage.php:86
+msgid "Url base de la plataforma Goteo "
+msgstr "Goteo platform base URL"
+
+#: src/GoteoSettingsPage.php:98
+msgid "API Base Url"
+msgstr "API Base Url"
+
+#: src/GoteoSettingsPage.php:109
+msgid "User"
+msgstr "User"
+
+#: src/GoteoSettingsPage.php:120
+msgid "Key"
+msgstr "Key"
+
+#: src/GoteoSettingsPage.php:175
+msgid ""
+"<p>El % de comisión que escojas se utilizará para calcular la cantidad de "
+"dinero que puedes donar a través de <a href=\"https://goteo.org\">Goteo.org</"
+"a></p>"
+msgstr ""
+"<p>The commission % you choose will be used to calculate the amount of money "
+"you can donate through <a href=\"https://goteo.org\">Goteo.org</a></p>"
+
+#: src/GoteoSettingsPage.php:179
+msgid ""
+"<p>Las credenciales introducidas se usarán para conectarse a la plataforma "
+"<a href=\"https://goteo.org\">Goteo.org</a></p>"
+msgstr ""
+"<p>The credentials entered will be used to connect to the <a href=\"https://"
+"goteo.org\">Goteo.org</a> platform</p>"
+
+#: templates/admin/admin.php:11
+msgid "Datos"
+msgstr "Data"
+
+#: templates/admin/admin.php:16
+msgid "Saldo comprometido"
+msgstr "Commited balance"
+
+#: templates/admin/admin.php:22
+msgid "Saldo enviado a Goteo"
+msgstr "Balance sent"
+
+#: templates/admin/admin.php:28
+msgid "Saldo pendiente de enviar"
+msgstr "Balance to be sent"
+
+#: templates/admin/admin.php:34
+msgid "DONATE"
+msgstr "Donate"
+
+#: templates/admin/options.php:8
+msgid "Save Settings"
+msgstr "Save settings"
+
+#: templates/admin/options.php:22
+msgid "Save API Credentials"
+msgstr "Save API credentials"
+
+#: templates/admin/partials/map.php:6
+msgid "Mapa de impacto"
+msgstr "Impact map"
+
+#: templates/admin/partials/projects_widget.php:6
+msgid "Proyectos beneficiarios"
+msgstr "Beneficiary projects"

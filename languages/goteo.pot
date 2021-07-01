@@ -1,0 +1,124 @@
+# Copyright (C) 2021 Platoniq Foundation, Goteo
+# This file is distributed under the GNU Public License v3.
+msgid ""
+msgstr ""
+"Project-Id-Version: Goteo plugin 0.0.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/goteo-wordpress-plugin\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-06-30T17:32:30+02:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.5.0\n"
+"X-Domain: goteo\n"
+
+#. Plugin Name of the plugin
+msgid "Goteo plugin"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://git.goteo.org/dev/goteo-wordpress-plugin"
+msgstr ""
+
+#. Description of the plugin
+msgid "This Wordpress - Woocommerce plugin connects a marketplace to the crowdfunding platform Goteo.org"
+msgstr ""
+
+#. Author of the plugin
+msgid "Platoniq Foundation, Goteo"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://goteo.org"
+msgstr ""
+
+#: src/Goteo.php:32
+msgid "Crowdfunding Plugin"
+msgstr ""
+
+#: src/Goteo.php:33
+msgid "Crowdfunding"
+msgstr ""
+
+#: src/GoteoSettingsPage.php:20
+#: src/GoteoSettingsPage.php:21
+msgid "Settings"
+msgstr ""
+
+#: src/GoteoSettingsPage.php:45
+msgid "Goteo Plugin Settings"
+msgstr ""
+
+#: src/GoteoSettingsPage.php:52
+msgid "Comisión para la plataforma"
+msgstr ""
+
+#: src/GoteoSettingsPage.php:63
+msgid "Fecha de inicio de donaciones"
+msgstr ""
+
+#: src/GoteoSettingsPage.php:79
+msgid "Goteo API KEY Settings"
+msgstr ""
+
+#: src/GoteoSettingsPage.php:86
+msgid "Url base de la plataforma Goteo "
+msgstr ""
+
+#: src/GoteoSettingsPage.php:98
+msgid "API Base Url"
+msgstr ""
+
+#: src/GoteoSettingsPage.php:109
+msgid "User"
+msgstr ""
+
+#: src/GoteoSettingsPage.php:120
+msgid "Key"
+msgstr ""
+
+#: src/GoteoSettingsPage.php:175
+msgid "<p>El % de comisión que escojas se utilizará para calcular la cantidad de dinero que puedes donar a través de <a href=\"https://goteo.org\">Goteo.org</a></p>"
+msgstr ""
+
+#: src/GoteoSettingsPage.php:179
+msgid "<p>Las credenciales introducidas se usarán para conectarse a la plataforma <a href=\"https://goteo.org\">Goteo.org</a></p>"
+msgstr ""
+
+#: templates/admin/admin.php:11
+msgid "Datos"
+msgstr ""
+
+#: templates/admin/admin.php:16
+msgid "Saldo comprometido"
+msgstr ""
+
+#: templates/admin/admin.php:22
+msgid "Saldo enviado a Goteo"
+msgstr ""
+
+#: templates/admin/admin.php:28
+msgid "Saldo pendiente de enviar"
+msgstr ""
+
+#: templates/admin/admin.php:34
+msgid "DONATE"
+msgstr ""
+
+#: templates/admin/options.php:8
+msgid "Save Settings"
+msgstr ""
+
+#: templates/admin/options.php:22
+msgid "Save API Credentials"
+msgstr ""
+
+#: templates/admin/partials/map.php:6
+msgid "Mapa de impacto"
+msgstr ""
+
+#: templates/admin/partials/projects_widget.php:6
+msgid "Proyectos beneficiarios"
+msgstr ""

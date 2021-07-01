@@ -3,7 +3,7 @@
  Plugin Name: Goteo plugin
  Plugin URI: https://git.goteo.org/dev/goteo-wordpress-plugin
  Description: This Wordpress - Woocommerce plugin connects a marketplace to the crowdfunding platform Goteo.org
- Version: 0.0.1
+ Version: 0.0.2
  Author: Platoniq Foundation, Goteo
  Author URI: https://goteo.org
  License: GNU Public License v3
@@ -48,7 +48,20 @@ function deactivate() {
 }
 
 function uninstall() {
+  delete_option( 'goteo_date' );
+  delete_option( 'goteo_comission' );
+  delete_option( 'goteo_base_url' );
+  delete_option( 'goteo_base_api_url' );
+  delete_option( 'goteo_key' );
+  delete_option( 'goteo_user' );
 }
+
+function goteo_load_plugin_textdomain() {
+    load_plugin_textdomain('goteo', false, basename( dirname( __FILE__ )) . '/languages');
+}
+add_action('plugins_loaded', 'goteo_load_plugin_textdomain');
+
+
 
 function goteo_calculate_amount() {
   $orders = wc_get_orders( 
@@ -117,4 +130,4 @@ register_activation_hook( __FILE__, 'activate');
 
 register_deactivation_hook( __FILE__, 'deactivate');
 
-// register_uninstall_hook(__FILE__, 'uninstall');
+register_uninstall_hook(__FILE__, 'uninstall');
