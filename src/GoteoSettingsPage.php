@@ -159,7 +159,7 @@ class GoteoSettingsPage {
 
   function woodonation_connection_markup_disabled() {
     ?>
-    <p><?= __('Puedes activar esta opción instalando WooDonation', 'Goteo') ?></p>
+    <p><?= __('Puedes activar esta opción instalando WooDonations', 'Goteo') ?></p>
     <input type="checkbox" id="goteo_date" name="goteo_woodonation_connection" disabled >
     <?php
   }

@@ -16,17 +16,21 @@
           <p><b> <?php echo __('Saldo comprometido', 'goteo') ?> </b></p>
 
           <p> <?= wc_price( goteo_calculate_amount() ); ?> </p>
+
+          <p> <?echo __('Esta cantidad se calcula con el % definido en la configuración del plugin y el total de ventas dentro de la plataforma', 'goteo') ?> </p>
       </li>
 
       <li>
           <p><b> <?php echo __('Saldo enviado a Goteo', 'goteo') ?> </b></p>
 
           <p> <?= wc_price($matcher->{'amount-available'}, array('decimals' => 0)); ?> </p>
+
+          <p> <?php echo __('Esta es la cantidad total que el Matcher tiene dentro de la plataforma Goteo', 'goteo') ?> </p>
       </li>
 
       <?php if (goteo_woodonation_active() and get_option('goteo_woodonation_connection')): ?>
         <li>
-          <h3> <?php echo __('Donaciones a través de Woo Donations', 'goteo') ?> </h3>
+          <h3> <?php echo __('Donaciones a través de WooDonations', 'goteo') ?> </h3>
 
           <p> <?= wc_price( goteo_calculate_donations($matcher) ) ?> </p>
 

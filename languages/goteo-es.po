@@ -1,46 +1,24 @@
 # Copyright (C) 2021 Platoniq Foundation, Goteo
 # This file is distributed under the GNU Public License v3.
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Goteo plugin 0.0.2\n"
+"Project-Id-Version: Goteo plugin 0.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/goteo-wordpress-"
 "plugin\n"
+"POT-Creation-Date: 2021-07-05 13:40+0200\n"
+"PO-Revision-Date: 2021-07-05 13:40+0200\n"
+"Last-Translator: \n"
 "Language-Team: \n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-07-01 19:51+0200\n"
-"PO-Revision-Date: 2021-07-01 19:51+0200\n"
 "X-Generator: Poedit 3.0\n"
 "X-Domain: goteo\n"
-"Last-Translator: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: es\n"
-
-#. Plugin Name of the plugin
-msgid "Goteo plugin"
-msgstr "Goteo plugin"
-
-#. Plugin URI of the plugin
-msgid "https://git.goteo.org/dev/goteo-wordpress-plugin"
-msgstr "https://git.goteo.org/dev/goteo-wordpress-plugin"
-
-#. Description of the plugin
-msgid ""
-"This Wordpress - Woocommerce plugin connects a marketplace to the "
-"crowdfunding platform Goteo.org"
-msgstr ""
-"This Wordpress - Woocommerce plugin connects a marketplace to the "
-"crowdfunding platform Goteo.org"
-
-#. Author of the plugin
-msgid "Platoniq Foundation, Goteo"
-msgstr "Platoniq Foundation, Goteo"
-
-#. Author URI of the plugin
-msgid "https://goteo.org"
-msgstr "https://goteo.org"
+"X-Poedit-KeywordsList: __;__e;esc_attr_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: src/Goteo.php:32
 msgid "Crowdfunding Plugin"
@@ -49,6 +27,10 @@ msgstr "Crowdfunding Plugin"
 #: src/Goteo.php:33
 msgid "Crowdfunding"
 msgstr "Crowdfunding"
+
+#: src/Goteo.php:43 src/GoteoSettingsPage.php:30
+msgid "You do not have sufficient permissions to access this page."
+msgstr "No tienes permisos suficientes para acceder a esta página."
 
 #: src/GoteoSettingsPage.php:20 src/GoteoSettingsPage.php:21
 msgid "Settings"
@@ -66,31 +48,38 @@ msgstr "Comisión para la plataforma"
 msgid "Fecha de inicio de donaciones"
 msgstr "Fecha de inicio de donaciones"
 
-#: src/GoteoSettingsPage.php:79
+#: src/GoteoSettingsPage.php:75 src/GoteoSettingsPage.php:83
+msgid "Connexión con WooDonation"
+msgstr "Connexión con WooDonation"
+
+#: src/GoteoSettingsPage.php:98
 msgid "Goteo API KEY Settings"
 msgstr "Configuración de la API KEY de Goteo"
 
-#: src/GoteoSettingsPage.php:86
+#: src/GoteoSettingsPage.php:105
 msgid "Url base de la plataforma Goteo "
 msgstr "Url de la plataforma Goteo "
 
-#: src/GoteoSettingsPage.php:98
+#: src/GoteoSettingsPage.php:117
 msgid "API Base Url"
 msgstr "Url base de la API"
 
-#: src/GoteoSettingsPage.php:109
+#: src/GoteoSettingsPage.php:128
 msgid "User"
 msgstr "Usuario"
 
-#: src/GoteoSettingsPage.php:120
+#: src/GoteoSettingsPage.php:139
 msgid "Key"
 msgstr "Llave"
 
 #: src/GoteoSettingsPage.php:162
-msgid "Puedes activar esta opción instalando WooDonation"
+#, fuzzy
+#| msgid "Puedes activar esta opción instalando WooDonation"
+msgid "Puedes activar esta opción instalando WooDonations"
 msgstr "Puedes activar esta opción instalando WooDonation"
 
-#: src/GoteoSettingsPage.php:175
+#: src/GoteoSettingsPage.php:208
+#, php-format
 msgid ""
 "<p>El % de comisión que escojas se utilizará para calcular la cantidad de "
 "dinero que puedes donar a través de <a href=\"https://goteo.org\">Goteo.org</"
@@ -100,7 +89,7 @@ msgstr ""
 "dinero que puedes donar a través de <a href=\"https://goteo.org\">Goteo.org</"
 "a></p>"
 
-#: src/GoteoSettingsPage.php:179
+#: src/GoteoSettingsPage.php:212
 msgid ""
 "<p>Las credenciales introducidas se usarán para conectarse a la plataforma "
 "<a href=\"https://goteo.org\">Goteo.org</a></p>"
@@ -116,17 +105,36 @@ msgstr "Datos"
 msgid "Saldo comprometido"
 msgstr "Saldo comprometido"
 
-#: templates/admin/admin.php:22
+#: templates/admin/admin.php:20
+#, php-format
+msgid ""
+"Esta cantidad se calcula con el % definido en la configuración del plugin y "
+"el total de ventas dentro de la plataforma"
+msgstr ""
+"Esta cantidad se calcula con el % definido en la configuración del plugin y "
+"el total de ventas dentro de la plataforma"
+
+#: templates/admin/admin.php:24
 msgid "Saldo enviado a Goteo"
 msgstr "Saldo enviado a Goteo"
 
 #: templates/admin/admin.php:28
-msgid "Saldo pendiente de enviar"
-msgstr "Saldo pendiente de enviar"
+msgid ""
+"Esta es la cantidad total que el Matcher tiene dentro de la plataforma Goteo"
+msgstr ""
+"Esta es la cantidad total que el Matcher tiene dentro de la plataforma Goteo"
 
-#: templates/admin/admin.php:34
+#: templates/admin/admin.php:33
+msgid "Donaciones a través de WooDonations"
+msgstr "Donaciones a través de WooDonations"
+
+#: templates/admin/admin.php:39 templates/admin/admin.php:51
 msgid "DONATE"
 msgstr "Donar"
+
+#: templates/admin/admin.php:45
+msgid "Saldo pendiente de enviar"
+msgstr "Saldo pendiente de enviar"
 
 #: templates/admin/options.php:8
 msgid "Save Settings"
@@ -136,6 +144,10 @@ msgstr "Guardar configuración"
 msgid "Save API Credentials"
 msgstr "Guardar credenciales"
 
+#: templates/admin/options.php:23
+msgid "Check API"
+msgstr "Comprobar credenciales"
+
 #: templates/admin/partials/map.php:6
 msgid "Mapa de impacto"
 msgstr "Mapa de impacto"
@@ -143,3 +155,22 @@ msgstr "Mapa de impacto"
 #: templates/admin/partials/projects_widget.php:6
 msgid "Proyectos beneficiarios"
 msgstr "Proyectos beneficiarios"
+
+#~ msgid "Goteo plugin"
+#~ msgstr "Goteo plugin"
+
+#~ msgid "https://git.goteo.org/dev/goteo-wordpress-plugin"
+#~ msgstr "https://git.goteo.org/dev/goteo-wordpress-plugin"
+
+#~ msgid ""
+#~ "This Wordpress - Woocommerce plugin connects a marketplace to the "
+#~ "crowdfunding platform Goteo.org"
+#~ msgstr ""
+#~ "This Wordpress - Woocommerce plugin connects a marketplace to the "
+#~ "crowdfunding platform Goteo.org"
+
+#~ msgid "Platoniq Foundation, Goteo"
+#~ msgstr "Platoniq Foundation, Goteo"
+
+#~ msgid "https://goteo.org"
+#~ msgstr "https://goteo.org"

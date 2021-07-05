@@ -1,7 +1,7 @@
 <?php
 /*
  Plugin Name: Goteo plugin
- Plugin URI: https://git.goteo.org/dev/goteo-wordpress-plugin
+ Plugin URI: https://github.com/GoteoFoundation/goteo-wordpress-plugin
  Description: This Wordpress - Woocommerce plugin connects a marketplace to the crowdfunding platform Goteo.org
  Version: 0.3
  Author: Platoniq Foundation, Goteo

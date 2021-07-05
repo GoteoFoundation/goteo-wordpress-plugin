@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: goteo_wordpress_plugin\n"
-"POT-Creation-Date: 2021-06-30 17:12+0200\n"
-"PO-Revision-Date: 2021-06-30 17:16+0200\n"
+"Project-Id-Version: Goteo plugin 0.3\n"
+"POT-Creation-Date: 2021-07-05 13:42+0200\n"
+"PO-Revision-Date: 2021-07-05 13:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -44,31 +44,37 @@ msgstr "Comissió per la plataforma"
 msgid "Fecha de inicio de donaciones"
 msgstr "Data d'inici de les donacions"
 
-#: src/GoteoSettingsPage.php:79
+#: src/GoteoSettingsPage.php:75 src/GoteoSettingsPage.php:83
+msgid "Connexión con WooDonation"
+msgstr "Connexió amb WooDonations"
+
+#: src/GoteoSettingsPage.php:98
 msgid "Goteo API KEY Settings"
 msgstr "Configuració de la API KEY de Goteo"
 
-#: src/GoteoSettingsPage.php:86
+#: src/GoteoSettingsPage.php:105
 msgid "Url base de la plataforma Goteo "
 msgstr "Url base de la plataforma Goteo "
 
-#: src/GoteoSettingsPage.php:98
+#: src/GoteoSettingsPage.php:117
 msgid "API Base Url"
 msgstr "Url base de la API de Goteo"
 
-#: src/GoteoSettingsPage.php:109
+#: src/GoteoSettingsPage.php:128
 msgid "User"
 msgstr "Usuari"
 
-#: src/GoteoSettingsPage.php:120
+#: src/GoteoSettingsPage.php:139
 msgid "Key"
 msgstr "Clau"
 
 #: src/GoteoSettingsPage.php:162
-msgid "Puedes activar esta opción instalando WooDonation"
+#, fuzzy
+#| msgid "Puedes activar esta opción instalando WooDonation"
+msgid "Puedes activar esta opción instalando WooDonations"
 msgstr "Pots activar aquesta opció instal·lant WooDonation"
 
-#: src/GoteoSettingsPage.php:175
+#: src/GoteoSettingsPage.php:208
 #, php-format
 msgid ""
 "<p>El % de comisión que escojas se utilizará para calcular la cantidad de "
@@ -79,7 +85,7 @@ msgstr ""
 "diners que pots donar a través de <a href=\"https://goteo.org\">Goteo.org</"
 "a></p>"
 
-#: src/GoteoSettingsPage.php:179
+#: src/GoteoSettingsPage.php:212
 msgid ""
 "<p>Las credenciales introducidas se usarán para conectarse a la plataforma "
 "<a href=\"https://goteo.org\">Goteo.org</a></p>"
@@ -95,17 +101,42 @@ msgstr "Dades"
 msgid "Saldo comprometido"
 msgstr "Saldo compromés"
 
-#: templates/admin/admin.php:22
+#: templates/admin/admin.php:20
+#, fuzzy, php-format
+#| msgid ""
+#| "Este dinero se calcula con el % definido en la configuración del plugin y "
+#| "el total de ventas dentro de la plataforma"
+msgid ""
+"Esta cantidad se calcula con el % definido en la configuración del plugin y "
+"el total de ventas dentro de la plataforma"
+msgstr ""
+"Aquesta quantitat es calcula amb el % definit a la configuració del plugin i "
+"el total de ventes dintre de la plataforma"
+
+#: templates/admin/admin.php:24
 msgid "Saldo enviado a Goteo"
 msgstr "Saldo enviat a Goteo"
 
 #: templates/admin/admin.php:28
-msgid "Saldo pendiente de enviar"
-msgstr "Saldo pendent d'enviar"
+msgid ""
+"Esta es la cantidad total que el Matcher tiene dentro de la plataforma Goteo"
+msgstr ""
+"Aquesta és la quantitat total que el Matcher té dintre de la plataforma de "
+"crowdfunding"
 
-#: templates/admin/admin.php:34
+#: templates/admin/admin.php:33
+#, fuzzy
+#| msgid "Donaciones a través de Woo Donations"
+msgid "Donaciones a través de WooDonations"
+msgstr "Donacions a través de WooDonations"
+
+#: templates/admin/admin.php:39 templates/admin/admin.php:51
 msgid "DONATE"
 msgstr "Donar"
+
+#: templates/admin/admin.php:45
+msgid "Saldo pendiente de enviar"
+msgstr "Saldo pendent d'enviar"
 
 #: templates/admin/options.php:8
 msgid "Save Settings"
